@@ -14,4 +14,4 @@ COPY 'vector_store.car' /home/wso2carbon/wso2mi-4.4.0/repository/deployment/serv
 RUN chown -R appuser:appuser /home/wso2carbon
 
 # Switch to the non-root user
-USER appuser
+USER 10001
