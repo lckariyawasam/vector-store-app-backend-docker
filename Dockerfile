@@ -113,7 +113,7 @@ RUN \
 RUN apt-get purge -y netcat-traditional unzip wget
 
 # set the user and work directory
-USER ${USER_ID}
+USER 10802
 WORKDIR ${USER_HOME}
 
 # set environment variables
