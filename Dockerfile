@@ -96,15 +96,15 @@ RUN \
     && useradd --system --create-home --home-dir ${USER_HOME} --no-log-init -g ${USER_GROUP_ID} -u ${USER_ID} ${USER} \
     && echo '[ ! -z "${TERM}" -a -r /etc/motd ] && cat /etc/motd' >> /etc/bash.bashrc; echo "${MOTD}" > /etc/motd
 
-# copy init script to user home
-COPY --chown=wso2carbon:wso2 docker-entrypoint.sh ${USER_HOME}/
-
 # add the WSO2 product distribution to user's home directory
 RUN \
     wget -O ${WSO2_SERVER}.zip "${WSO2_SERVER_DIST_URL}" \
     && unzip -d ${USER_HOME} ${WSO2_SERVER}.zip \
     && rm -f ${WSO2_SERVER}.zip \
     && chown wso2carbon:wso2 -R ${WSO2_SERVER_HOME}
+
+# copy init script to user home
+COPY --chown=wso2carbon:wso2 docker-entrypoint.sh ${USER_HOME}/
 
 # copy capp
 COPY 'vector_store.car' ${USER_HOME}/wso2mi-4.4.0/repository/deployment/server/carbonapps/
