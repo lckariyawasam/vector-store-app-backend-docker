@@ -1,7 +1,10 @@
-schemaVersion: 1.0 
- # Example endpoint configuration
+schemaVersion: "1.1"
 endpoints:
-- name: vector-store-backend
-  service:
-     port: 8290
-  type: REST
+    - name: vector-store-backend
+      displayName: vector-store-backend
+      service:
+        basePath: /
+        port: 8290
+      type: REST
+      networkVisibilities:
+        - Public
