@@ -3,7 +3,7 @@ endpoints:
     - name: vector-store-backend
       displayName: vector-store-backend
       service:
-        basePath: /upload
+        basePath: /
         port: 8290
       type: REST
       networkVisibilities:
